@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="recipe">
+	<resultMap type="recipeDto" id="recipeMap">
+		<result property="recipe_num" column="RECIPE_NUM" />
+		<result property="member_id" column="MEMBER_ID" />
+		<result property="recipe_title" column="RECIPE_TITLE" />
+		<result property="recipe_content" column="RECIPE_CONTENT" />
+		<result property="recipe_time" column="RECIPE_TIME" />
+		<result property="recipe_readcount" column="RECIPE_READCOUNT" />
+		<result property="recipe_best" column="RECIPE_BEST" />
+		<result property="recipe_date" column="RECIPE_DATE" />
+		<result property="category" column="CATEGORY" />
+	</resultMap>
+<!--  
+  <select id="recipeOne" parameterType="int" resultType="RecipeDto">
+  	SELECT *
+  	FROM RECIPE
+  	WHERE RECIPE_NUM = #{recipe_num}
+  </select>-->
+
+	<insert id="insert" parameterType="recipeDto">
+		<selectKey resultType="int"      order="BEFORE" 
+                    keyProperty="recipe_num">
+          select max(recipe_num) + 1  from recipe
+         </selectKey>
+		
+		INSERT INTO RECIPE
+		VALUES(#{recipe_num}
+		, 'admin1', #{recipe_title},
+		#{recipe_content}, #{recipe_time}, '11'
+		, '11', now(), #{category} )
+	</insert>
+
+	<select id="selectOne" resultMap="recipeMap">
+		SELECT *
+		FROM RECIPE
+		WHERE RECIPE_NUM = #{recipe_num}
+	</select>
+	
+	<select id="selectList" resultType="com.mvc.recipe.dto.Recipe_StepDto">
+		select /*+INDEX(recipe_step recipe_step_index) */ *
+		from recipe_step
+		where recipe_num >= 0 and step_index >= 0 and recipe_num = #{recipe_num}
+	</select>
+</mapper>

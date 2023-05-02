@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cook_image">
+	<resultMap type="cook_imgDto" id="cook_imgMap">
+		<result property="recipe_num" column="RECIPE_NUM" />
+		<result property="cook_original" column="COOK_ORIGINAL" />
+		<result property="cook_db" column="COOK_DB" />
+	</resultMap>
+
+
+	<insert id="insert" parameterType="cook_imgDto">
+		INSERT INTO COOK_IMAGE
+		VALUES( #{recipe_num}, #{cook_original}, #{cook_db} )
+	</insert>
+	
+	<!-- 신호준 -->
+	<select id="selectList" resultMap="cook_imgMap">
+		SELECT *
+		FROM COOK_IMAGE
+		WHERE RECIPE_NUM =#{recipe_num}
+	</select>
+</mapper>

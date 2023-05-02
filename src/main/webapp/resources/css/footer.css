@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+    c {
+        font-size: 15px;
+        font-style: normal;
+        text-align: center; 
+        color:#585959;
+        transform : translateY(280%);
+    }   
+
+    b {
+        margin-left: 50px;
+        float: left;
+    }
+
+    d {
+        margin-right: 50px;
+        float: right;
+    }
+
+    footdesign {
+        margin-top: 20px;
+        height: 1000px;
+        padding-bottom: 80px;
+    }
+
+    footer {
+        margin-top: 300px;
+        position : bottom;
+        transform : translateY(-100%);
+        
+    }

@@ -1,0 +1,39 @@
+* {
+    margin: 0px;
+    box-sizing: border-box;
+}
+html {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+h1{
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+
+.end{
+    width: 600px;
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 30px;
+    text-align: center;
+}
+div {
+    padding-bottom: 50px;
+}
+.button{
+    width: 20%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+
+
+
+

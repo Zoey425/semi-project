@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="material">
+  	<resultMap type="materialDto" id="materialMap">
+  		<result property="recipe_num" column="RECIPE_NUM"/>
+  		<result property="material_name" column="MATERIAL_NAME"/>
+  		<result property="material_amount" column="MATERIAL_AMOUNT"/>
+  	</resultMap>
+  	
+  	<!--  
+  <select id="materialOne" parameterType="int" resultType="MaterialDto">
+  		SELECT *
+  		FROM MATERIAL
+  		WHERE RECIPE_NUM = #{recipe_num}
+  	</select>-->
+  
+  <insert id="insertMaterial" parameterType="materialDto">
+		INSERT INTO 
+		MATERIAL 
+		VALUES( #{recipe_num}, #{material_name}, #{material_amount} )
+	</insert>
+  
+  <!-- 신호준 -->
+  <select id="selectList" resultMap="materialMap">
+  	SELECT *
+  	FROM MATERIAL
+  	WHERE RECIPE_NUM = #{recipe_num}
+  </select>
+  </mapper>

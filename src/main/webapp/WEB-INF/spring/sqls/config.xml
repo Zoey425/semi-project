@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+        <!--<typeAlias type="com.mvc.upgrade.model.dto.BoardDto" alias="boardDto"/>  -->
+        <typeAlias type="com.mvc.recipe.dto.Cook_ImgDto" alias="cook_Imgdto"/>
+        <typeAlias type="com.mvc.recipe.dto.MaterialDto" alias="materialDto"/>
+        <typeAlias type="com.mvc.recipe.dto.MemberDto" alias="memberDto"/>
+        <typeAlias type="com.mvc.recipe.dto.Recipe_ReplyDto" alias="recipe_Replydto"/>
+        <typeAlias type="com.mvc.recipe.dto.Recipe_StepDto" alias="recipe_Stepdto"/>
+        <typeAlias type="com.mvc.recipe.dto.RecipeDto" alias="recipeDto"/>
+        <typeAlias type="com.mvc.recipe.dto.SauceDto" alias="sauceDto"/>
+        <typeAlias type="com.mvc.recipe.dto.DetailDto" alias="detailDto"/>
+        
+    </typeAliases>
+
+    <mappers>
+    <!-- resource : src/main/resources -->
+    <!--<mapper resource="/mybatis/board-mapper.xml"/> -->
+        <mapper resource="/mybatis/cook_img-mapper.xml"/>
+        <mapper resource="/mybatis/material-mapper.xml"/>
+        <mapper resource="/mybatis/recipe_reply-mapper.xml"/>
+        <mapper resource="/mybatis/recipe_step-mapper.xml"/>
+        <mapper resource="/mybatis/recipe-mapper.xml"/>
+        <mapper resource="/mybatis/sauce-mapper.xml"/>
+        <mapper resource="/mybatis/member-mapper.xml"/>
+		<mapper resource="/mybatis/detail-mapper.xml"/>
+		<mapper resource="/mybatis/main-mapper.xml"/>
+    </mappers>
+</configuration>

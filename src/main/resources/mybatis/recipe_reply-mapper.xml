@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="recipe_reply">
+  	<resultMap type="recipe_replyDto" id="recipe_replyMap">
+  		<result property="reply_num" column="REPLY_NUM"/>
+  		<result property="recipe_num" column="RECIPE_NUM"/>
+  		<result property="member_id" column="MEMBER_ID"/>
+  		<result property="reply_content" column="REPLY_CONTENT"/>
+  		<result property="reply_date" column="REPLY_DATE"/>
+  	</resultMap>
+  
+  <insert id="insert" parameterType="recipe_replyDto">
+		INSERT INTO RECIPE_REPLY
+		VALUES( #{reply_num}, #{recipe_num}, 
+		#{member_id}, #{reply_content}, #{reply_date} )
+	</insert>
+  
+  </mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- Main 은영님 -->
+
+
+<mapper namespace="mainList">
+
+
+	<resultMap type="DetailDto" id="mainListMap">
+		<result property="recipe_num" column="RECIPE_NUM" />
+		<result property="member_nicname" column="MEMBER_NICNAME" />
+		<result property="recipe_title" column="RECIPE_TITLE" />
+		<result property="recipe_content" column="RECIPE_CONTENT" />
+		<result property="cook_original" column="COOK_ORIGINAL" />
+		<result property="cook_db" column="COOK_DB" />
+		<result property="reply_num" column="REPLY_NUM" />
+		<result property="recipe_readcount" column="RECIPE_READCOUNT" />
+		<result property="recipe_best" column="RECIPE_BEST" />
+		<result property="recipe_date" column="RECIPE_DATE" />
+		<result property="category" column="CATEGORY" />
+		<result property="ranking" column="RANKING" />
+	</resultMap>
+
+	  <select id="selectList" parameterType="DetailDto" resultMap="mainListMap">
+		  	SELECT * FROM DETAIL
+		  	WHERE RECIPE_NUM
+		  	ORDER BY RECIPE_NUM DESC
+	  </select>
+	  
+	  <select id="rankList" parameterType="DetailDto" resultMap="mainListMap">		  
+		  SELECT * , RANK() OVER (ORDER BY RECIPE_BEST DESC) AS RANKING
+		  FROM DETAIL
+		  WHERE RECIPE_BEST;
+	  </select>
+	  
+	  <select id="hitList" parameterType="int" resultMap="mainListMap" >
+	  	SELECT *  FROM DETAIL
+		WHERE RECIPE_NUM
+		ORDER BY recipe_readcount DESC;
+  	</select>
+	
+	<select id="selectOne" parameterType="int" resultMap="mainListMap" >
+	  	SELECT * FROM DETAIL
+	  	WHERE RECIPE_NUM = #{recipe_num}
+  	</select>
+	
+</mapper>
